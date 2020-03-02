@@ -44,8 +44,9 @@ for i in adult.columns:
     adult_test_encode[i] = le.fit_transform(adult_test[i])
 
 dt = DecisionTreeClassifier(random_state=seed)
-adult_train_drop = adult_train_encode[adult.notnull().all(axis=1)]
-adult_test_drop = adult_test_encode[adult.notnull().all(axis=1)]
+print adult_train_encode.isnull().any(axis=1).sum()
+adult_train_drop = adult_train_encode[adult_train.sort_index().reset_index().notnull().all(axis=1)]
+adult_test_drop = adult_test_encode[adult_test.sort_index().reset_index().notnull().all(axis=1)]
 dt.fit(adult_train_drop.iloc[:,0:-1],adult_train_drop.iloc[:,-1])
 score = dt.score(adult_test_drop.iloc[:,0:-1],adult_test_drop.iloc[:,-1])
 
