@@ -1,7 +1,7 @@
 # Data-Mining-Coursework
 This is an answer of Data Mining Coursework 1 from Jasper Ning.
 
-## Requirement
+## Requirements
 - Python 2.7.16
 - Numpy 1.16.2
 - Scikit-learn 0.20.3
